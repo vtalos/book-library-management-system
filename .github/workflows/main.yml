@@ -26,7 +26,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./App
-          target: build
+          target: build-env
           load: true
       -
         name: Build and push
@@ -34,5 +34,5 @@ jobs:
         with:
           context: ./App
           push: true
-          target: final
+          target: runtime-image
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:latest
