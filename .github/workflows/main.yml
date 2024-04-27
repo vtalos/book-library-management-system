@@ -34,5 +34,4 @@ jobs:
         with:
           context: ./App
           push: true
-          target: runtime-image
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:latest
