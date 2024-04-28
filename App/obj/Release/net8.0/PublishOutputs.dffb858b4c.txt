@@ -1,5 +1,0 @@
-C:\Users\vtalo\Desktop\seip-lab-assignments\App\bin\Release\net8.0\publish\DotNet.Docker.exe
-C:\Users\vtalo\Desktop\seip-lab-assignments\App\bin\Release\net8.0\publish\DotNet.Docker.dll
-C:\Users\vtalo\Desktop\seip-lab-assignments\App\bin\Release\net8.0\publish\DotNet.Docker.deps.json
-C:\Users\vtalo\Desktop\seip-lab-assignments\App\bin\Release\net8.0\publish\DotNet.Docker.runtimeconfig.json
-C:\Users\vtalo\Desktop\seip-lab-assignments\App\bin\Release\net8.0\publish\DotNet.Docker.pdb
