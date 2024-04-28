@@ -36,7 +36,9 @@ public class BookRepository
 
     public bool DeleteBook(int id)
     {
+        int initialCount = books.Count;
         books.RemoveAll(b => b.Id == id);
-        return true;
+        return books.Count < initialCount; // Returns true if a book was deleted
     }
+
 }
