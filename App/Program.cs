@@ -1,11 +1,12 @@
 ﻿using System;
 
-
 public class Program
 {
     public static void Main(string[] args)
     {
         BookRepository bookRepository = new BookRepository();
+
+        int id;
 
         while (true)
         {
@@ -25,21 +26,50 @@ public class Program
                     Console.WriteLine();
                     ShowBookList(bookRepository);
                     break;
+
                 case "2":
                     Console.WriteLine();
-                    SearchForBook(bookRepository);
+                    Console.Write("Enter the ID of the book to search: ");
+                    if (int.TryParse(Console.ReadLine(), out id))
+                    {
+                        SearchForBook(bookRepository, id);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid ID. Please enter a valid integer.");
+                    }
                     break;
+
                 case "3":
                     Console.WriteLine();
-                    AddNewBook(bookRepository);
+                    Console.Write("Enter the title of the new book: ");
+                    string title = Console.ReadLine();
+                    Console.Write("Enter the author of the new book: ");
+                    string author = Console.ReadLine();
+                    Console.Write("Enter the genre of the new book: ");
+                    string genre = Console.ReadLine();
+                    Console.Write("Enter the ISBN of the new book: ");
+                    string isbn = Console.ReadLine();
+                    AddNewBook(bookRepository, title, author, genre, isbn);
                     break;
+
                 case "4":
                     Console.WriteLine();
-                    DeleteBookById(bookRepository);
+                    Console.Write("Enter the ID of the book to delete: ");
+                    if (int.TryParse(Console.ReadLine(), out id))
+                    {
+                        DeleteBookById(bookRepository, id);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid ID. Please enter a valid integer.");
+                    }
                     break;
+
                 case "5":
                     Console.WriteLine("Exiting the program...");
                     return;
+
                 default:
                     Console.WriteLine("Invalid choice. Please try again.");
                     break;
@@ -65,62 +95,36 @@ public class Program
         }
     }
 
-    public static void SearchForBook(BookRepository bookRepository)
+    public static void SearchForBook(BookRepository bookRepository, int id)
     {
-        Console.Write("Enter the ID of the book to search: ");
-        if (int.TryParse(Console.ReadLine(), out int id))
+        var book = bookRepository.GetBookById(id);
+        if (book != null)
         {
-            var book = bookRepository.GetBookById(id);
-            if (book != null)
-            {
-                Console.WriteLine($"Book found: Title: {book.Title}, Author: {book.Author}, Genre: {book.Genre}, ISBN: {book.ISBN}");
-            }
-            else
-            {
-                Console.WriteLine("Book not found.");
-            }
+            Console.WriteLine($"Book found: Title: {book.Title}, Author: {book.Author}, Genre: {book.Genre}, ISBN: {book.ISBN}");
         }
         else
         {
-            Console.WriteLine("Invalid ID. Please enter a valid integer.");
+            Console.WriteLine("Book not found.");
         }
     }
 
-    public static void AddNewBook(BookRepository bookRepository)
+    public static void AddNewBook(BookRepository bookRepository, string title, string author, string genre, string isbn)
     {
-        Console.Write("Enter the title of the new book: ");
-        string title = Console.ReadLine();
-        Console.Write("Enter the author of the new book: ");
-        string author = Console.ReadLine();
-        Console.Write("Enter the genre of the new book: ");
-        string genre = Console.ReadLine();
-        Console.Write("Enter the ISBN of the new book: ");
-        string isbn = Console.ReadLine();
-
         Book newBook = new Book { Title = title, Author = author, Genre = genre, ISBN = isbn };
         bookRepository.AddBook(newBook);
         Console.WriteLine("New book added successfully.");
     }
 
-    public static void DeleteBookById(BookRepository bookRepository)
+    public static void DeleteBookById(BookRepository bookRepository, int id)
     {
-        Console.Write("Enter the ID of the book to delete: ");
-        if (int.TryParse(Console.ReadLine(), out int id))
+        bool deleted = bookRepository.DeleteBook(id);
+        if (deleted)
         {
-            bool deleted = bookRepository.DeleteBook(id);
-            if (deleted)
-            {
-                Console.WriteLine("Book deleted successfully.");
-            }
-            else
-            {
-                Console.WriteLine("Book not found.");
-            }
+            Console.WriteLine("Book deleted successfully.");
         }
         else
         {
-            Console.WriteLine("Invalid ID. Please enter a valid integer.");
+            Console.WriteLine("Book not found.");
         }
     }
 }
-
