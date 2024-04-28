@@ -3,5 +3,3 @@ App.Tests/bin/
 App.Tests/obj/
 App/bin/
 App/obj/
-DotNet.Docker.csproj.user
-App.Tests.csproj.user
