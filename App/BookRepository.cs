@@ -24,7 +24,7 @@ public class BookRepository
     /// </summary>
     /// <param name="id">The ID of the book to retrieve.</param>
     /// <returns>The book with the specified ID, or null if not found.</returns>
-    public Book GetBookById(int id)
+    public Book? GetBookById(int id)
     {
         return books.FirstOrDefault(b => b.Id == id);
     }
@@ -65,5 +65,4 @@ public class BookRepository
         books.RemoveAll(b => b.Id == id);
         return books.Count < initialCount; // Returns true if a book was deleted
     }
-
 }

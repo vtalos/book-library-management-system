@@ -26,7 +26,7 @@ public class Program
             Console.WriteLine("5. Exit");
             Console.Write("Enter your choice (1-5): ");
 
-            string choice = Console.ReadLine(); // Read user choice
+            string? choice = Console.ReadLine(); // Read user choice
 
             // Process user choice
             switch (choice)
@@ -52,13 +52,13 @@ public class Program
                 case "3":
                     Console.WriteLine();
                     Console.Write("Enter the title of the new book: ");
-                    string title = Console.ReadLine();
+                    string? title = Console.ReadLine();
                     Console.Write("Enter the author of the new book: ");
-                    string author = Console.ReadLine();
+                    string? author = Console.ReadLine();
                     Console.Write("Enter the genre of the new book: ");
-                    string genre = Console.ReadLine();
+                    string? genre = Console.ReadLine();
                     Console.Write("Enter the ISBN of the new book: ");
-                    string isbn = Console.ReadLine();
+                    string? isbn = Console.ReadLine();
                     AddNewBook(bookRepository, title, author, genre, isbn);
                     break;
 
@@ -134,8 +134,14 @@ public class Program
     /// <param name="author">The author of the new book.</param>
     /// <param name="genre">The genre of the new book.</param>
     /// <param name="isbn">The ISBN of the new book.</param>
-    public static void AddNewBook(BookRepository bookRepository, string title, string author, string genre, string isbn)
+    public static void AddNewBook(BookRepository bookRepository, string? title, string? author, string? genre, string? isbn)
     {
+        if (title == null || author == null || genre == null || isbn == null)
+        {
+            Console.WriteLine("Error: Title, author, genre, and ISBN must not be null.");
+            return;
+        }
+
         Book newBook = new Book { Title = title, Author = author, Genre = genre, ISBN = isbn };
         bookRepository.AddBook(newBook);
         Console.WriteLine("New book added successfully.");
