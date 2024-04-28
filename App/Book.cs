@@ -1,4 +1,7 @@
-﻿public class Book
+﻿/// <summary>
+/// Represents a book entity with basic information.
+/// </summary>
+public class Book
 {
     public int Id { get; set; }
     public string Title { get; set; }

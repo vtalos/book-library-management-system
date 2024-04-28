@@ -1,15 +1,23 @@
 ﻿using System;
 
+/// <summary>
+/// Represents the main program class for managing the book library.
+/// </summary>
 public class Program
 {
+    /// <summary>
+    /// The entry point of the program.
+    /// </summary>
+    /// <param name="args">The command-line arguments.</param>
     public static void Main(string[] args)
     {
         BookRepository bookRepository = new BookRepository();
 
-        int id;
+        int id; // Variable to store book ID
 
         while (true)
         {
+            // Display menu options
             Console.WriteLine("Book Library Menu:");
             Console.WriteLine("1. Show Book List");
             Console.WriteLine("2. Search for a Book");
@@ -18,8 +26,9 @@ public class Program
             Console.WriteLine("5. Exit");
             Console.Write("Enter your choice (1-5): ");
 
-            string choice = Console.ReadLine();
+            string choice = Console.ReadLine(); // Read user choice
 
+            // Process user choice
             switch (choice)
             {
                 case "1":
@@ -79,6 +88,10 @@ public class Program
         }
     }
 
+    /// <summary>
+    /// Displays the list of all books in the repository.
+    /// </summary>
+    /// <param name="bookRepository">The book repository.</param>
     public static void ShowBookList(BookRepository bookRepository)
     {
         var books = bookRepository.GetAllBooks();
@@ -95,6 +108,11 @@ public class Program
         }
     }
 
+    /// <summary>
+    /// Searches for a book by its ID and displays its information if found.
+    /// </summary>
+    /// <param name="bookRepository">The book repository.</param>
+    /// <param name="id">The ID of the book to search for.</param>
     public static void SearchForBook(BookRepository bookRepository, int id)
     {
         var book = bookRepository.GetBookById(id);
@@ -108,6 +126,14 @@ public class Program
         }
     }
 
+    /// <summary>
+    /// Adds a new book to the repository.
+    /// </summary>
+    /// <param name="bookRepository">The book repository.</param>
+    /// <param name="title">The title of the new book.</param>
+    /// <param name="author">The author of the new book.</param>
+    /// <param name="genre">The genre of the new book.</param>
+    /// <param name="isbn">The ISBN of the new book.</param>
     public static void AddNewBook(BookRepository bookRepository, string title, string author, string genre, string isbn)
     {
         Book newBook = new Book { Title = title, Author = author, Genre = genre, ISBN = isbn };
@@ -115,6 +141,11 @@ public class Program
         Console.WriteLine("New book added successfully.");
     }
 
+    /// <summary>
+    /// Deletes a book from the repository by its ID.
+    /// </summary>
+    /// <param name="bookRepository">The book repository.</param>
+    /// <param name="id">The ID of the book to delete.</param>
     public static void DeleteBookById(BookRepository bookRepository, int id)
     {
         bool deleted = bookRepository.DeleteBook(id);

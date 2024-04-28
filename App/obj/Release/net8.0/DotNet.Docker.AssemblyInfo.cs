@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DotNet.Docker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+70306f5f63c095b0365db1d7ab8c7c7442f776d0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ca6cd3255854eeba469b1ba418b6829b7cd76eb7")]
 [assembly: System.Reflection.AssemblyProductAttribute("DotNet.Docker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DotNet.Docker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
