@@ -1,9 +1,9 @@
 ﻿using System;
 
 
-class Program
+public class Program
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
         BookRepository bookRepository = new BookRepository();
 
@@ -49,7 +49,7 @@ class Program
         }
     }
 
-    static void ShowBookList(BookRepository bookRepository)
+    public static void ShowBookList(BookRepository bookRepository)
     {
         var books = bookRepository.GetAllBooks();
         if (books.Count == 0)
@@ -65,7 +65,7 @@ class Program
         }
     }
 
-    static void SearchForBook(BookRepository bookRepository)
+    public static void SearchForBook(BookRepository bookRepository)
     {
         Console.Write("Enter the ID of the book to search: ");
         if (int.TryParse(Console.ReadLine(), out int id))
@@ -86,7 +86,7 @@ class Program
         }
     }
 
-    static void AddNewBook(BookRepository bookRepository)
+    public static void AddNewBook(BookRepository bookRepository)
     {
         Console.Write("Enter the title of the new book: ");
         string title = Console.ReadLine();
@@ -102,7 +102,7 @@ class Program
         Console.WriteLine("New book added successfully.");
     }
 
-    static void DeleteBookById(BookRepository bookRepository)
+    public static void DeleteBookById(BookRepository bookRepository)
     {
         Console.Write("Enter the ID of the book to delete: ");
         if (int.TryParse(Console.ReadLine(), out int id))
