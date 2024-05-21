@@ -37,3 +37,6 @@ Unit tests for the application are located in the `App.Tests` directory. To run 
 ## Contributing
 
 Contributions to this project are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or create a pull request.
+
+## Public Key Fingerprint
+This is my public key fingerprint: B262BD591E4E3453C8A9CE593EDDF7EEAD63583A
